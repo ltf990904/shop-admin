@@ -6,9 +6,9 @@ import ElementUI from "element-ui";
 import 'element-ui/lib/theme-chalk/index.css';
 
 // 导入组件
-import Login from "./components/pages/Login.vue"
+import Login from "./pages/Login"
 
-// 2.element - 注册
+// element - 注册
 Vue.use(ElementUI)
 // 注册路由
 Vue.use(VueRouter);
