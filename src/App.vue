@@ -1,20 +1,17 @@
 <template>
   <div id="app">
-    <!-- 调用Element UI组件 -->
-    <el-row>
-      <el-button type="primary">按钮</el-button>
-    </el-row>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
   name: "app",
+  data() {
+    return {};
+  },
   mounted() {
-    // 请求数据
-    this.$axios.get("https://api.github.com/users").then(res => {
-      console.log(res.data);
-    });
+    this.$axios.get("").then(res => {});
   }
 };
 </script>
