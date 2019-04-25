@@ -62,7 +62,7 @@ export default {
 }
 
 /* 首页布局的高度需要修改为100% */
-.page-container > .el-container {
+.container > .el-container {
   position: absolute;
   width: 100%;
   top: 0;
