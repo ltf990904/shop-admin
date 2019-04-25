@@ -10,11 +10,13 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-    this.$axios.get("").then(res => {});
-  }
+  mounted() {}
 };
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
 </style>
