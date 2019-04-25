@@ -33,6 +33,7 @@ export default {
   },
   methods: {
     onSubmit() {
+      // 找到表单元素，调用表单验证
       this.$refs.form.validate(valid => {
         if (!valid) return;
 

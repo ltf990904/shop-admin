@@ -35,7 +35,7 @@ export default {
     return {
       menus: [
         {
-          icon: "el-icon-goods",
+          icon: "el-icon-shopping-bag-1",
           name: "购物商城",
           children: [
             { name: "商品管理", src: "/admin/goods-list" },
@@ -43,9 +43,14 @@ export default {
           ]
         },
         {
-          icon: "el-icon-service",
+          icon: "el-icon-user",
           name: "会员管理",
           children: [{ name: "会员列表", src: "/admin/account-list" }]
+        },
+        {
+          icon: "el-icon-s-order",
+          name: "商城订单",
+          children: [{ name: "订单管理", src: "/admin/order-list" }]
         }
       ]
     };
@@ -64,10 +69,6 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
-}
-
-.el-menu:not(.el-menu--collapse) {
-  width: 200px;
 }
 
 .el-menu {
