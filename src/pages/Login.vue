@@ -44,6 +44,7 @@ export default {
           data: this.form,
           withCredentials: true //处理跨域请求的参数
         }).then(res => {
+          // console.log(res);
           const { status, message } = res.data;
           if (status == 0) {
             //登录成功跳转
