@@ -7,8 +7,8 @@
         <el-button @click="handleMoreDelete">删除</el-button>
       </el-col>
       <div>
-        <el-input placeholder="请输入内容" class="input-with-select">
-          <el-button slot="append" icon="el-icon-search"></el-button>
+        <el-input placeholder="请输入内容" v-model="searchvalue" class="input-with-select">
+          <el-button slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
         </el-input>
       </div>
     </el-row>
@@ -37,6 +37,18 @@
         </template>
       </el-table-column>
     </el-table>
+    <!-- 分页器 -->
+    <div class="block">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="pageIndex"
+        :page-sizes="[5, 10, 15, 20]"
+        :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="totalCount"
+      ></el-pagination>
+    </div>
   </div>
 </template>
 
@@ -45,18 +57,37 @@ export default {
   data() {
     return {
       tableData: [],
-      ids: []
+      ids: [],
+      pageIndex: 1,
+      pageSize: 5,
+      totalCount: 0,
+      searchvalue: ""
     };
   },
   methods: {
     // 获取商品列表数据
     getList() {
+      // this.$axios({
+      //   url: "/admin/goods/getlist?pageIndex=1&pageSize=4&searchvalue="
+      // }).then(res => {
+      //   // console.log(res);
+      //   const { message } = res.data;
+      //   this.tableData = message;
+      // });
+
       this.$axios({
-        url: "/admin/goods/getlist?pageIndex=1&pageSize=4&searchvalue="
+        method: "GET",
+        url: `/admin/goods/getlist`,
+        params: {
+          pageIndex: this.pageIndex,
+          pageSize: this.pageSize,
+          searchvalue: this.searchvalue
+        }
       }).then(res => {
-        console.log(res);
-        const { message } = res.data;
+        const { message, pageIndex, pageSize, totalcount } = res.data;
         this.tableData = message;
+        (this.pageIndex = pageIndex), (this.pageSize = pageSize);
+        this.totalCount = totalcount;
       });
     },
 
@@ -89,6 +120,14 @@ export default {
     // 删除多条数据
     handleMoreDelete() {
       const id = this.ids.join(",");
+      // 判断是否选择了商品
+      if (id == "") {
+        this.$message({
+          type: "error",
+          message: "没有选择商品"
+        });
+        return;
+      }
       // 询问是否删除
       this.$confirm("是否删除所选商品?").then(() => {
         //调用删除接口
@@ -109,7 +148,20 @@ export default {
       });
     },
     // 编辑
-    handleEdit(index, row) {}
+    handleEdit(index, row) {},
+    // 搜索
+    handleSearch() {
+      this.pageIndex = 1;
+      this.getList();
+    },
+    handleSizeChange(val) {
+      this.pageSize = val;
+      this.getList();
+    },
+    handleCurrentChange(val) {
+      this.pageIndex = val;
+      this.getList();
+    }
   },
   mounted() {
     this.getList();
@@ -132,5 +184,9 @@ export default {
 .goods-img {
   width: 64px;
   margin-right: 10px;
+}
+
+.block {
+  margin-top: 20px;
 }
 </style>
