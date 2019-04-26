@@ -2,7 +2,7 @@
   <el-menu
     default-active="1-1"
     class="el-menu-vertical-demo"
-    background-color="#001529"
+    background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b"
     :collapse="collapse"
@@ -84,7 +84,7 @@ export default {
 }
 .logo {
   height: 60px;
-  background: #002140;
+  background: #222;
   text-align: center;
 }
 </style>

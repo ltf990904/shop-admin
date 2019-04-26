@@ -16,18 +16,31 @@ Vue.use(VueRouter);
 
 // 路由的配置
 const routes = [
-  { path: "/", redirect: "/login" },
+  { path: "/", redirect: "/admin" },
   { path: "/login", component: Login },
   { path: "/admin", component: Admin },
 ]
 
 // 创建路由对象
 const router = new VueRouter({ routes })
+// 拦截路由的请求，先判断用户是否是登录
+router.beforeEach((to, from, next) => {
+  if (to.path === "/login") {
+    return next();
+  }
+  // 没有登录，跳转到登录页
+  if (!localStorage.getItem("username")) {
+    next("/login");
+  } else {
+    next()
+  }
+})
 
 // 是否是生成环境
 Vue.config.productionTip = false;
 
 Vue.prototype.$axios = axios;
+axios.defaults.baseURL = "http://127.0.0.1:8899"
 
 new Vue({
   router,

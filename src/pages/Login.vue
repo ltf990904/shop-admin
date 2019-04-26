@@ -39,7 +39,7 @@ export default {
 
         // 发起ajax请求
         this.$axios({
-          url: "http://localhost:8899/admin/account/login",
+          url: "/admin/account/login",
           method: "POST",
           data: this.form,
           withCredentials: true //处理跨域请求的参数
@@ -47,7 +47,10 @@ export default {
           // console.log(res);
           const { status, message } = res.data;
           if (status == 0) {
-            //登录成功跳转
+            // 把用户的信息存储到本地
+            localStorage.setItem("username", message.uname);
+            localStorage.setItem("realname", message.realname);
+            //登录成功跳转到后台首页
             this.$router.push("/admin");
           } else {
             // 登录失败，提示用户名或密码错误
