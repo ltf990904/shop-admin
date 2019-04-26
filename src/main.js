@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 // 导入组件
 import Login from "./pages/Login.vue"
 import Admin from "./pages/Admin.vue"
+import GoodsList from "./pages/GoodsList.vue"
 
 // element - 注册
 Vue.use(ElementUI)
@@ -18,7 +19,11 @@ Vue.use(VueRouter);
 const routes = [
   { path: "/", redirect: "/admin" },
   { path: "/login", component: Login },
-  { path: "/admin", component: Admin },
+  {
+    path: "/admin", component: Admin, meta: "管理后台", children: [
+      { path: "goods-list", component: GoodsList, meta: "商品管理", }
+    ]
+  }
 ]
 
 // 创建路由对象

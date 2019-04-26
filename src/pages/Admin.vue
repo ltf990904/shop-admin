@@ -11,7 +11,14 @@
           <!-- 头部组件 -->
           <Header @updateCollapse="updateCollapse"/>
         </el-header>
-        <el-main>Main</el-main>
+        <el-main>
+          <!-- 面包屑组件 -->
+          <el-breadcrumb separator="＞" class="breadcrumb">
+            <el-breadcrumb-item v-for="(item, index) in routerInfo" :key="index">{{item}}</el-breadcrumb-item>
+          </el-breadcrumb>
+          <!-- 展示子页面 -->
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -37,6 +44,14 @@ export default {
   components: {
     Aside,
     Header
+  },
+  computed: {
+    routerInfo() {
+      const arr = this.$route.matched.map(v => {
+        return v.meta;
+      });
+      return arr;
+    }
   }
 };
 </script>
@@ -57,8 +72,6 @@ export default {
 .el-main {
   background-color: #e9eef3;
   color: #333;
-  text-align: center;
-  line-height: 160px;
 }
 
 /* 首页布局的高度需要修改为100% */
@@ -76,5 +89,9 @@ export default {
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
+}
+.breadcrumb {
+  padding: 10px 0 15px;
+  border-bottom: 1px #ccc solid;
 }
 </style>
