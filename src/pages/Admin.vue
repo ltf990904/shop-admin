@@ -46,6 +46,7 @@ export default {
     Header
   },
   computed: {
+    // 监听路由的变化，返回meta
     routerInfo() {
       const arr = this.$route.matched.map(v => {
         return v.meta;
