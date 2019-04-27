@@ -17,12 +17,12 @@
       style="width: 100%"
       @selection-change="handleSelectionChange"
     >
-      <el-table-column type="selection"></el-table-column>
-      <el-table-column prop="user_name" label="姓名"></el-table-column>
-      <el-table-column prop="mobile" label="手机号码"></el-table-column>
-      <el-table-column prop="email" label="邮箱"></el-table-column>
-      <el-table-column prop="reg_time" label="时间"></el-table-column>
-      <el-table-column label="操作" align="right">
+      <el-table-column type="selection" width="55"></el-table-column>
+      <el-table-column prop="user_name" label="姓名" width="200"></el-table-column>
+      <el-table-column prop="mobile" label="手机号码" width="200"></el-table-column>
+      <el-table-column prop="email" label="邮箱" width="250"></el-table-column>
+      <el-table-column prop="reg_time" label="时间" width="300"></el-table-column>
+      <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.row)">查看</el-button>
         </template>
@@ -137,11 +137,6 @@ export default {
 
 .tooltip {
   margin: 20px 0;
-}
-
-.goods-img {
-  width: 64px;
-  margin-right: 10px;
 }
 
 .block {

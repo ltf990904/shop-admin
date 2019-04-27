@@ -3,7 +3,7 @@
     <i class="el-icon-s-fold" @click="handleToggle" title="展开左侧栏"></i>
     <div class="user-info">
       {{username}} {{realname}}
-      <a href="javascript:void(0)" class="logout" @click="handleLogout">退出</a>
+      <span class="logout" @click="handleLogout">退出</span>
     </div>
   </el-row>
 </template>
@@ -68,6 +68,6 @@ export default {
   margin-left: 10px;
 }
 .logout:hover {
-  border-bottom: 2px solid red;
+  border-bottom: 3px solid #5fb878;
 }
 </style>
