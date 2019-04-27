@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Login from "./pages/Login"
 import Admin from "./pages/Admin"
 import GoodsList from "./pages/goods/GoodsList"
+import CategoryList from "./pages/category/CategoryList"
+import AccountList from "./pages/account/AccountList"
 
 // element - 注册
 Vue.use(ElementUI)
@@ -21,7 +23,9 @@ const routes = [
   { path: "/login", component: Login },
   {
     path: "/admin", component: Admin, meta: "管理后台", children: [
-      { path: "goods-list", component: GoodsList, meta: "商品管理", }
+      { path: "goods-list", component: GoodsList, meta: "商品管理", },
+      { path: "category-list", component: CategoryList, meta: "栏目管理", },
+      { path: "account-list", component: AccountList, meta: "会员列表", }
     ]
   }
 ]

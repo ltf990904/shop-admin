@@ -4,7 +4,7 @@
     class="el-menu-vertical-demo"
     background-color="#545c64"
     text-color="#fff"
-    active-text-color="#ffd04b"
+    active-text-color="#fff"
     :collapse="collapse"
   >
     <div class="logo">
@@ -77,8 +77,13 @@ export default {
 .el-menu-vertical-demo {
   height: 100%;
 }
+.el-submenu__title i {
+  color: #fff;
+}
 
 .el-menu a {
+  display: block;
+  width: 160px;
   color: inherit;
   text-decoration: none;
 }
