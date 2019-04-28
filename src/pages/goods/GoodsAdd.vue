@@ -113,7 +113,7 @@
 </template>
 
 <script>
-// require styles
+// 引入富文本编辑器的样式文件
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
@@ -146,7 +146,6 @@ export default {
       },
 
       imageUrl: "",
-
       dialogImageUrl: "",
       dialogVisible: false
     };
@@ -157,7 +156,6 @@ export default {
         url: "/admin/goods/add/goods",
         method: "POST",
         data: this.form,
-        withCredentials: true
       }).then(res => {
         const { message } = res.data;
         this.$message({

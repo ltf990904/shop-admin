@@ -99,8 +99,6 @@ export default {
       this.$confirm("是否删除商品?").then(() => {
         this.$axios({
           url: `/admin/goods/del/${id}`
-          // 处理跨域请求的参数
-          // withCredentials: true
         }).then(res => {
           const { status, message } = res.data;
           this.$message({
@@ -135,8 +133,6 @@ export default {
         //调用删除接口
         this.$axios({
           url: `/admin/goods/del/${id}`,
-          // 处理跨域请求的参数
-          withCredentials: true
         }).then(res => {
           const { status, message } = res.data;
           // 删除成功后的提示
@@ -156,7 +152,6 @@ export default {
     },
     // 搜索
     handleSearch() {
-      // this.pageIndex = 1;
       this.getList();
     },
     // 没有显示多少条数据
