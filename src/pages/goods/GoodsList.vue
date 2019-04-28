@@ -3,7 +3,7 @@
     <!-- 列表顶部 -->
     <el-row type="flex" justify="space-between" align="middle" class="tooltip">
       <el-col>
-        <el-button>新增</el-button>
+        <el-button @click="handleAdd">新增</el-button>
         <el-button @click="handleMoreDelete">删除</el-button>
       </el-col>
       <div>
@@ -96,9 +96,9 @@ export default {
       const id = row.id;
       this.$confirm("是否删除商品?").then(() => {
         this.$axios({
-          url: `/admin/goods/del/${id}`,
+          url: `/admin/goods/del/${id}`
           // 处理跨域请求的参数
-          withCredentials: true
+          // withCredentials: true
         }).then(res => {
           const { status, message } = res.data;
           this.$message({
@@ -147,17 +147,21 @@ export default {
         });
       });
     },
+    // 添加
+    handleAdd() {},
     // 编辑
     handleEdit(index, row) {},
     // 搜索
     handleSearch() {
-      this.pageIndex = 1;
+      // this.pageIndex = 1;
       this.getList();
     },
+    // 没有显示多少条数据
     handleSizeChange(val) {
       this.pageSize = val;
       this.getList();
     },
+    // 当前页数
     handleCurrentChange(val) {
       this.pageIndex = val;
       this.getList();

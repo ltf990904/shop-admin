@@ -22,17 +22,19 @@ export default {
     },
     // 退出登录
     handleLogout() {
-      this.$axios({
-        url: "/admin/account/logout"
-      }).then(res => {
-        const { status } = res.data;
-        if (status === 0) {
-          // replace是处理跳转，直接替换掉当前的页面
-          this.$router.replace("/login");
-          // 清除本地存储的数据
-          localStorage.removeItem("username");
-          localStorage.removeItem("realname");
-        }
+      this.$confirm("确定退出吗?").then(() => {
+        this.$axios({
+          url: "/admin/account/logout"
+        }).then(res => {
+          const { status } = res.data;
+          if (status === 0) {
+            // replace是处理跳转，直接替换掉当前的页面
+            this.$router.replace("/login");
+            // 清除本地存储的数据
+            localStorage.removeItem("username");
+            localStorage.removeItem("realname");
+          }
+        });
       });
     }
   },
@@ -68,6 +70,6 @@ export default {
   margin-left: 10px;
 }
 .logout:hover {
-  border-bottom: 3px solid #5fb878;
+  color: red;
 }
 </style>

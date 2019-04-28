@@ -22,8 +22,8 @@ export default {
   data() {
     return {
       form: {
-        uname: "",
-        upwd: ""
+        uname: "admin",
+        upwd: "123456"
       },
       rules: {
         uname: [{ required: true, message: "请输入账号", trigger: "blur" }],
@@ -42,7 +42,7 @@ export default {
           url: "/admin/account/login",
           method: "POST",
           data: this.form,
-          withCredentials: true //处理跨域请求的参数
+          // withCredentials: true //处理跨域请求的参数
         }).then(res => {
           // console.log(res);
           const { status, message } = res.data;

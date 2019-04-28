@@ -82,15 +82,6 @@ export default {
   top: 0;
   bottom: 0;
 }
-
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
-}
 .breadcrumb {
   padding: 10px 0 15px;
   border-bottom: 1px #ccc solid;
