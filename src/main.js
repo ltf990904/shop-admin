@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Login from "./pages/Login"
 import Admin from "./pages/Admin"
 import GoodsList from "./pages/goods/GoodsList"
+import GoodsAdd from "./pages/goods/GoodsAdd"
 import CategoryList from "./pages/category/CategoryList"
 import AccountList from "./pages/account/AccountList"
 
@@ -24,6 +25,7 @@ const routes = [
   {
     path: "/admin", component: Admin, meta: "管理后台", children: [
       { path: "goods-list", component: GoodsList, meta: "商品管理", },
+      { path: "goods-add", component: GoodsAdd, meta: "新增商品", },
       { path: "category-list", component: CategoryList, meta: "栏目管理", },
       { path: "account-list", component: AccountList, meta: "会员列表", }
     ]
@@ -50,7 +52,7 @@ Vue.config.productionTip = false;
 
 Vue.prototype.$axios = axios;
 axios.defaults.baseURL = "http://127.0.0.1:8899"
-axios.defaults.withCredentials=true
+axios.defaults.withCredentials = true
 
 new Vue({
   router,

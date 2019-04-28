@@ -3,7 +3,9 @@
     <!-- 列表顶部 -->
     <el-row type="flex" justify="space-between" align="middle" class="tooltip">
       <el-col>
-        <el-button @click="handleAdd">新增</el-button>
+        <router-link to="goods-add" class="btn-add">
+          <el-button>新增</el-button>
+        </router-link>
         <el-button @click="handleMoreDelete">删除</el-button>
       </el-col>
       <div>
@@ -147,10 +149,11 @@ export default {
         });
       });
     },
-    // 添加
-    handleAdd() {},
-    // 编辑
-    handleEdit(index, row) {},
+    // 编辑商品
+    handleEdit(index, row) {
+      // 跳转到编辑页，并且带上id
+      this.$router.push(`/admin/goods-edit/${row.id}`);
+    },
     // 搜索
     handleSearch() {
       // this.pageIndex = 1;
@@ -173,7 +176,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="less">
 .el-select .el-input {
   width: 130px;
 }
@@ -184,7 +187,9 @@ export default {
 .tooltip {
   margin: 20px 0;
 }
-
+.btn-add {
+  margin-right: 10px;
+}
 .goods-img {
   width: 64px;
   margin-right: 10px;
