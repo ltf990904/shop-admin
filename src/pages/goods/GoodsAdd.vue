@@ -105,7 +105,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="onSubmit">新增商品</el-button>
+          <el-button type="success" @click="onSubmit">新增商品</el-button>
         </el-form-item>
       </el-form>
     </el-col>
@@ -121,7 +121,6 @@ import "quill/dist/quill.bubble.css";
 import { quillEditor } from "vue-quill-editor";
 
 const axios = require("axios");
-axios.defaults.baseURL = "http://127.0.0.1:8899";
 
 export default {
   data() {
@@ -157,6 +156,7 @@ export default {
         method: "POST",
         data: this.form,
       }).then(res => {
+        // console.log(res);
         const { message } = res.data;
         this.$message({
           message,

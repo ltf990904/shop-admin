@@ -3,9 +3,9 @@
     <div class="form-control">
       <div>
         <router-link to="category-add" class="add-btn">
-          <el-button>新增</el-button>
+          <el-button type="success">新增</el-button>
         </router-link>
-        <el-button @click>删除</el-button>
+        <el-button type="danger" @click>删除</el-button>
       </div>
     </div>
 

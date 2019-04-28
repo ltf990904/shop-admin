@@ -24,7 +24,7 @@
       <el-table-column prop="reg_time" label="时间" width="300"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.row)">查看</el-button>
+          <el-button type="primary" size="mini" @click="handleEdit(scope.row)">查看</el-button>
         </template>
       </el-table-column>
     </el-table>
