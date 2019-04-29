@@ -5,7 +5,7 @@
         <router-link to="category-add" class="add-btn">
           <el-button type="success">新增</el-button>
         </router-link>
-        <el-button type="danger" @click>删除</el-button>
+        <el-button type="danger">删除</el-button>
       </div>
     </div>
 
@@ -27,15 +27,9 @@
       >
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <span>{{ node.label }}</span>
-          <input :value="data.sort_id" class="order-input" @change="handleSortId(data, $event)">
+          <input :value="data.sort_id" class="order-input" @blur="handleSortId(data, $event)">
           <span>
             <el-button type="text" size="mini" @click="() => handleEdit(data)">编辑</el-button>
-            <!-- <el-button
-							type="text"
-							size="mini"
-							@click="() => handleRemove(node, data)">
-							删除
-            </el-button>-->
           </span>
         </span>
       </el-tree>
@@ -106,7 +100,13 @@ export default {
           ...val,
           sort_id: +inputValue
         }
-      }).then(res => {});
+      }).then(res => {
+        const { message } = res.data;
+        this.$message({
+          message,
+          type: "success"
+        });
+      });
     }
   }
 };

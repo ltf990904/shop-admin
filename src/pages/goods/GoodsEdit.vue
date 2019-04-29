@@ -185,12 +185,7 @@ export default {
     },
     // 删除图片时候触发
     handleRemove(file, fileList) {
-      // fileList每一项的respone的属性才是 { name:xxx, shotUrl: xxx, url: xxx },
-      console.log(fileList);
-      this.form.fileList = fileList.map(v => {
-        return v.response;
-      });
-
+      this.form.fileList = fileList
       console.log(this.form.fileList);
     },
     // 上传图片成功后的回调

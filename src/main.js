@@ -12,6 +12,7 @@ import GoodsList from "./pages/goods/GoodsList"
 import GoodsAdd from "./pages/goods/GoodsAdd"
 import GoodsEdit from "./pages/goods/GoodsEdit"
 import CategoryList from "./pages/category/CategoryList"
+import CategoryAdd from "./pages/category/CategoryAdd"
 import AccountList from "./pages/account/AccountList"
 
 // element - 注册
@@ -29,6 +30,7 @@ const routes = [
       { path: "goods-add", component: GoodsAdd, meta: "新增商品" },
       { path: "goods-edit/:id", component: GoodsEdit, meta: "编辑商品" },
       { path: "category-list", component: CategoryList, meta: "栏目管理" },
+      { path: "category-add", component: CategoryAdd, meta: "新增栏目" },
       { path: "account-list", component: AccountList, meta: "会员列表" }
     ]
   }
