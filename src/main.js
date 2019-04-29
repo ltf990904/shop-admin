@@ -15,6 +15,8 @@ import CategoryList from "./pages/category/CategoryList"
 import CategoryAdd from "./pages/category/CategoryAdd"
 import AccountList from "./pages/account/AccountList"
 
+import store from './store';
+
 // element - 注册
 Vue.use(ElementUI)
 // 注册路由
@@ -59,6 +61,7 @@ axios.defaults.baseURL = "http://127.0.0.1:8899"
 axios.defaults.withCredentials = true //在axios发送请求时设置全局跨域
 
 new Vue({
+  store,
   router,
   render: h => h(App),
   // $mount作用相当于el，根实例挂载到节点

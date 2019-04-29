@@ -2,19 +2,26 @@
   <el-row type="flex" justify="space-between" align="middle" class="header">
     <i class="el-icon-s-fold" @click="handleToggle" title="展开左侧栏"></i>
     <div class="user-info">
-      {{username}} {{realname}}
+      {{user.username}} {{user.realname}}
       <span class="logout" @click="handleLogout">退出</span>
     </div>
   </el-row>
 </template>
 
 <script>
+// mapState是一个对象，是函数集合
+import { mapState } from "vuex";
+
 export default {
   data() {
-    return {
-      username: "",
-      realname: ""
-    };
+    return {};
+  },
+  computed: {
+    ...mapState({
+      // key的user是给模板渲染用,可以修改的
+      // 值user是不能修改，来自于store
+      user: "user"
+    })
   },
   methods: {
     handleToggle() {
@@ -38,11 +45,7 @@ export default {
       });
     }
   },
-  mounted() {
-    // 从本地存储获取用户信息
-    this.username = localStorage.getItem("username");
-    this.realname = localStorage.getItem("realname");
-  }
+  mounted() {}
 };
 </script>
 

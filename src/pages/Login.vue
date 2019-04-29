@@ -41,7 +41,7 @@ export default {
         this.$axios({
           url: "/admin/account/login",
           method: "POST",
-          data: this.form,
+          data: this.form
         }).then(res => {
           // console.log(res);
           const { status, message } = res.data;
@@ -49,6 +49,12 @@ export default {
             // 把用户的信息存储到本地
             localStorage.setItem("username", message.uname);
             localStorage.setItem("realname", message.realname);
+
+            this.$store.commit("setUser", {
+              username: message.uname,
+              realname: message.realname
+            });
+
             //登录成功跳转到后台首页
             this.$router.push("/admin");
           } else {
