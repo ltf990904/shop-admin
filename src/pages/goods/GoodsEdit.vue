@@ -141,13 +141,48 @@ export default {
     // 编辑器组件
     quillEditor
   },
+  mounted() {
+    // 请求类别数据
+    this.$axios({
+      url: "/admin/category/getlist/goods"
+    }).then(res => {
+      const { message } = res.data;
+      // 保存到categorys
+      this.categorys = message;
+    });
+
+    // 1.获取id
+    const { id } = this.$route.params;
+    // 2.请求商品数据
+    this.$axios({
+      url: `/admin/goods/getgoodsmodel/${id}`
+    }).then(res => {
+      const { message } = res.data;
+
+      //修改封面图片的预览图片
+      this.imageUrl = message.imgList[0].url;
+
+      const arr = message.fileList.map(v => {
+        return {
+          ...v,
+          url: "http://localhost:8899" + v.shorturl
+        };
+      });
+
+      //初始化form的值
+      this.form = {
+        ...message,
+        fileList: arr
+      };
+    });
+  },
   methods: {
     onSubmit() {
       // 提交form数据
       this.$axios({
         url: `/admin/goods/edit/${this.$route.params.id}`,
         method: "POST",
-        data: this.form,
+        data: this.form
       }).then(res => {
         const { message, status } = res.data;
 
@@ -185,43 +220,12 @@ export default {
     },
     // 删除图片时候触发
     handleRemove(file, fileList) {
-      this.form.fileList = fileList
-      console.log(this.form.fileList);
+      this.form.fileList = fileList;
     },
     // 上传图片成功后的回调
     handlePictureCard(res, file) {
       this.form.fileList.push(res);
     }
-  },
-  mounted() {
-    // 请求类别数据
-    this.$axios({
-      url: "/admin/category/getlist/goods"
-    }).then(res => {
-      const { message } = res.data;
-      // 保存到categorys
-      this.categorys = message;
-    });
-
-    // 1.获取id
-    const id = this.$route.params.id;
-    // 2.请求商品数据
-    this.$axios({
-      url: `/admin/goods/getgoodsmodel/${id}`
-    }).then(res => {
-      const { message, status } = res.data;
-      // 把返回赋值给form的默认值
-      this.form = message;
-
-      // 预览封面图片
-      this.imageUrl = message.imgList[0].url;
-      this.form.fileList = message.fileList.map(v => {
-        return {
-          ...v,
-          url: `http://127.0.0.1:8899` + v.shorturl
-        };
-      });
-    });
   }
 };
 </script>
