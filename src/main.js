@@ -15,6 +15,8 @@ import CategoryList from "./pages/category/CategoryList"
 import CategoryAdd from "./pages/category/CategoryAdd"
 import AccountList from "./pages/account/AccountList"
 import OrderList from "./pages/order/OrderList"
+import OrderEdit from "./pages/order/OrderEdit"
+import OrderDetail from "./pages/order/OrderDetail"
 
 import store from './store';
 
@@ -36,6 +38,9 @@ const routes = [
       { path: "category-add", component: CategoryAdd, meta: "新增栏目" },
       { path: "account-list", component: AccountList, meta: "会员列表" },
       { path: "order-list", component: OrderList, meta: "订单管理" }
+      ,
+      { path: "order-detail/:id", component: OrderDetail, meta: "订单详情" },
+      { path: "order-edit/:id", component: OrderEdit, meta: "编辑订单" }
     ]
   }
 ]

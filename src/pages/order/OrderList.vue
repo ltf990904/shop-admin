@@ -36,7 +36,9 @@
       <el-table-column prop="statusName" label="状态" minWidth="100"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button type="primary" style="margin-right:5px;" size="mini" @click="handleEdit(scope.row)">编辑</el-button>
+          <router-link :to="`order-edit/${scope.row.id}`">
+            <el-button size="mini" type="primary">编辑</el-button>
+          </router-link>
           <router-link :to="`order-detail/${scope.row.id}`">
             <el-button size="mini" type="success">查看</el-button>
           </router-link>
@@ -109,9 +111,6 @@ export default {
       this.pageIndex = val;
       this.getList();
     },
-    handleEdit(val) {
-      this.$router.push({ name: "order-edit", params: { id: val.id } });
-    },
     handleSelectionChange(val) {
       this.selectedRows = val;
     },
@@ -177,5 +176,9 @@ export default {
       height: 64px;
     }
   }
+}
+.el-button {
+  display: inline-block;
+  margin-left: 5px;
 }
 </style>
