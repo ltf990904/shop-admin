@@ -14,6 +14,7 @@ import GoodsEdit from "./pages/goods/GoodsEdit"
 import CategoryList from "./pages/category/CategoryList"
 import CategoryAdd from "./pages/category/CategoryAdd"
 import AccountList from "./pages/account/AccountList"
+import OrderList from "./pages/order/OrderList"
 
 import store from './store';
 
@@ -33,7 +34,8 @@ const routes = [
       { path: "goods-edit/:id", component: GoodsEdit, meta: "编辑商品" },
       { path: "category-list", component: CategoryList, meta: "栏目管理" },
       { path: "category-add", component: CategoryAdd, meta: "新增栏目" },
-      { path: "account-list", component: AccountList, meta: "会员列表" }
+      { path: "account-list", component: AccountList, meta: "会员列表" },
+      { path: "order-list", component: OrderList, meta: "订单管理" }
     ]
   }
 ]
