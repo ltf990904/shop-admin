@@ -14,7 +14,7 @@
           </el-select>
         </el-col>
         <el-col :span="6">
-          <el-input placeholder="请输入会员名称" v-model="searchvalue" class="input-with-select">
+          <el-input placeholder="请输入会员名称" v-model.trim="searchvalue" class="input-with-select">
             <el-button slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
           </el-input>
         </el-col>

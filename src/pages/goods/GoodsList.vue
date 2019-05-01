@@ -9,7 +9,7 @@
         <el-button type="danger" @click="handleMoreDelete">删除</el-button>
       </el-col>
       <div>
-        <el-input placeholder="请输入内容" v-model="searchvalue" class="input-with-select">
+        <el-input placeholder="请输入内容" v-model.trim="searchvalue" class="input-with-select">
           <el-button slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
         </el-input>
       </div>

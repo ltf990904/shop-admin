@@ -4,7 +4,7 @@
     <el-row type="flex" justify="space-between" align="middle" class="tooltip">
       <el-col></el-col>
       <div>
-        <el-input placeholder="会员名称" v-model="searchvalue" class="input-with-select">
+        <el-input placeholder="会员名称" v-model.trim="searchvalue" class="input-with-select">
           <el-button slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
         </el-input>
       </div>
