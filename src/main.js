@@ -46,7 +46,7 @@ router.beforeEach((to, from, next) => {
     return next();
   }
   // 没有登录，跳转到登录页
-  if (!localStorage.getItem("username")) {
+  if (!sessionStorage.getItem("username")) {
     next("/login");
   } else {
     next()

@@ -47,8 +47,8 @@ export default {
           const { status, message } = res.data;
           if (status == 0) {
             // 把用户的信息存储到本地
-            localStorage.setItem("username", message.uname);
-            localStorage.setItem("realname", message.realname);
+            sessionStorage.setItem("username", message.uname);
+            sessionStorage.setItem("realname", message.realname);
 
             this.$store.commit("setUser", {
               username: message.uname,

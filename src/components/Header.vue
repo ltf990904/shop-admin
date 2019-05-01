@@ -38,8 +38,8 @@ export default {
             // replace是处理跳转，直接替换掉当前的页面
             this.$router.replace("/login");
             // 清除本地存储的数据
-            localStorage.removeItem("username");
-            localStorage.removeItem("realname");
+            sessionStorage.removeItem("username");
+            sessionStorage.removeItem("realname");
           }
         });
       });
